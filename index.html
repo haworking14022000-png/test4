@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUẦN 5 - CHỦ ĐỀ 3: GIẢI THÍCH PHÁP LUẬT</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-primary: #fff0f5;
+            --bg-secondary: #ffffff;
+            --pink-primary: #ff4d8d;
+            --pink-light: #fff0f6;
+            --pink-gradient: linear-gradient(135deg, #ff2a75 0%, #ff758c 50%, #ff7eb3 100%);
+            --navy-deep: #1e293b;
+            --navy-legal: #0f172a;
+            --gold-accent: #d97706;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --card-shadow: 0 20px 40px rgba(255, 42, 117, 0.12), 0 5px 15px rgba(0,0,0,0.05);
+            --transition-speed: 0.6s;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-dark);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Ambient Flower & Legal Vector Decorative Background */
+        .bg-decorations {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .flower-petal {
+            position: absolute;
+            background: rgba(255, 182, 193, 0.4);
+            border-radius: 50% 0 50% 0;
+            animation: floatPetal 12s infinite ease-in-out;
+            filter: blur(1px);
+        }
+
+        .flower-petal:nth-child(1) { width: 90px; height: 90px; top: 8%; left: 4%; animation-duration: 10s; }
+        .flower-petal:nth-child(2) { width: 130px; height: 130px; bottom: 6%; right: 3%; animation-duration: 16s; transform: rotate(45deg); }
+        .flower-petal:nth-child(3) { width: 70px; height: 70px; top: 65%; left: 6%; animation-duration: 9s; transform: rotate(90deg); }
+        .flower-petal:nth-child(4) { width: 100px; height: 100px; top: 12%; right: 10%; animation-duration: 13s; transform: rotate(135deg); }
+
+        @keyframes floatPetal {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            50% { transform: translateY(-30px) rotate(20deg) scale(1.1); }
+        }
+
+        /* SVG Legal Icons Floating Background */
+        .legal-svg-bg {
+            position: absolute;
+            opacity: 0.05;
+            color: var(--navy-deep);
+            animation: floatIcon 15s infinite ease-in-out alternate;
+        }
+        .legal-svg-1 { top: 5%; right: 20%; font-size: 16rem; }
+        .legal-svg-2 { bottom: 5%; left: 15%; font-size: 18rem; }
+
+        @keyframes floatIcon {
+            0% { transform: rotate(-5deg) translateY(0); }
+            100% { transform: rotate(5deg) translateY(-20px); }
+        }
+
+        /* Presentation Container */
+        .presentation-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            width: 92%;
+            max-width: 1300px;
+            height: 86vh;
+            background: var(--bg-secondary);
+            border-radius: 28px;
+            box-shadow: var(--card-shadow);
+            padding: 35px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.9) translateY(40px) rotateX(-5deg);
+            transition: all var(--transition-speed) cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid rgba(255, 117, 140, 0.25);
+            overflow: hidden;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1) translateY(0) rotateX(0deg);
+        }
+
+        /* Dynamic Waterfall Animations */
+        .slide .waterfall {
+            opacity: 0;
+            transform: translateY(30px) scale(0.96);
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide.active .waterfall {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .slide.active .waterfall:nth-child(1) { transition-delay: 0.1s; }
+        .slide.active .waterfall:nth-child(2) { transition-delay: 0.22s; }
+        .slide.active .waterfall:nth-child(3) { transition-delay: 0.34s; }
+        .slide.active .waterfall:nth-child(4) { transition-delay: 0.46s; }
+        .slide.active .waterfall:nth-child(5) { transition-delay: 0.58s; }
+
+        /* Animated Title */
+        .animated-gradient-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #ff1493, #ff4500, #d97706, #1e3a8a, #ff1493);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 5s ease infinite;
+            margin-bottom: 0;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .slide-header {
+            border-bottom: 3px dashed rgba(255, 77, 141, 0.25);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slide-tag {
+            background: var(--pink-gradient);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(255, 42, 117, 0.35);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            animation: pulseBadge 2s infinite alternate;
+        }
+
+        @keyframes pulseBadge {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        /* Slide Content Grid & Cards */
+        .content-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 22px;
+            border: 2px solid rgba(255, 182, 193, 0.4);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--pink-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-7px) scale(1.01);
+            box-shadow: 0 18px 35px rgba(255, 42, 117, 0.18);
+            border-color: var(--pink-primary);
+        }
+
+        .card:hover::before {
+            width: 10px;
+        }
+
+        .card-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--navy-legal);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title i {
+            color: var(--pink-primary);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-title i {
+            transform: rotate(15deg) scale(1.2);
+        }
+
+        .card-body {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: #334155;
+        }
+
+        .card-body ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card-body ul li {
+            position: relative;
+            padding-left: 26px;
+            margin-bottom: 8px;
+        }
+
+        .card-body ul li::before {
+            content: '🌸';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 0.95rem;
+        }
+
+        /* SLIDE 1 Hero Specifics */
+        .slide-title-hero {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            gap: 25px;
+        }
+
+        .hero-badge {
+            background: #ffe4e6;
+            color: #e11d48;
+            font-size: 1.3rem;
+            font-weight: 800;
+            padding: 12px 35px;
+            border-radius: 50px;
+            letter-spacing: 2px;
+            border: 2px dashed #fb7185;
+            box-shadow: 0 8px 20px rgba(251, 113, 133, 0.2);
+        }
+
+        .hero-main-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4.2rem;
+            font-weight: 900;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #d97706 0%, #ff1493 40%, #8b5cf6 80%, #1e1b4b 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 4s ease infinite;
+            filter: drop-shadow(0 10px 15px rgba(255, 42, 117, 0.15));
+        }
+
+        .hero-icon {
+            font-size: 5.5rem;
+            color: var(--pink-primary);
+            animation: pulseHeroIcon 2s infinite ease-in-out alternate;
+        }
+
+        @keyframes pulseHeroIcon {
+            0% { transform: scale(1) rotate(-8deg); }
+            100% { transform: scale(1.15) rotate(8deg); }
+        }
+
+        /* SLIDE 7 Full Dashboard Replica (Designed to fit 100% Screen perfectly) */
+        .solution-dashboard {
+            background: #0f2b2c;
+            color: white;
+            border-radius: 20px;
+            padding: 24px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            height: 100%;
+            justify-content: space-between;
+        }
+
+        .dash-header {
+            text-align: center;
+        }
+        .dash-header h3 {
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: #ffffff;
+            font-weight: 900;
+        }
+        .dash-header h4 {
+            font-size: 1.3rem;
+            color: #e2e8f0;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+        .dash-header p {
+            font-size: 1rem;
+            color: #94a3b8;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        .dash-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            flex: 1;
+        }
+
+        .dash-card {
+            border-radius: 14px;
+            padding: 18px 22px;
+            color: #1e293b;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .dash-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(255,255,255,0.15);
+        }
+
+        .dash-card-1 { background-color: #f0fdf4; border-left: 6px solid #22c55e; }
+        .dash-card-2 { background-color: #f0f9ff; border-left: 6px solid #3b82f6; }
+        .dash-card-3 { background-color: #fffbeb; border-left: 6px solid #f59e0b; }
+        .dash-card-4 { background-color: #fdf2f8; border-left: 6px solid #ec4899; }
+
+        .dash-card-title {
+            font-weight: 800;
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1.5px solid rgba(0,0,0,0.1);
+        }
+
+        .dash-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .dash-card ul li {
+            font-size: 1rem;
+            margin-bottom: 6px;
+            position: relative;
+            padding-left: 18px;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+        .dash-card ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .dash-footer {
+            background: #091e1f;
+            text-align: center;
+            padding: 14px;
+            border-radius: 10px;
+            font-weight: 900;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: #ffffff;
+            border: 1px solid rgba(255,255,255,0.1);
+            animation: pulseGlow 3s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 5px rgba(255,77,141,0.2); }
+            100% { box-shadow: 0 0 20px rgba(255,77,141,0.6); }
+        }
+
+        /* SLIDE 8 Image Placeholder Layout */
+        .anle-container {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 25px;
+            height: 100%;
+            align-items: center;
+        }
+
+        .image-placeholder-box {
+            width: 100%;
+            height: 360px;
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e6 100%);
+            border: 3px dashed var(--pink-primary);
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            color: var(--pink-primary);
+            cursor: pointer;
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder-box:hover {
+            background: #ffe4e6;
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(255, 42, 117, 0.25);
+        }
+
+        .image-placeholder-box i {
+            font-size: 4rem;
+            animation: bounceIcon 2s infinite;
+        }
+
+        @keyframes bounceIcon {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .image-placeholder-box span {
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        /* Controls & Navigation */
+        .controls {
+            position: absolute;
+            bottom: 25px;
+            right: 50px;
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .btn-nav {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid var(--pink-primary);
+            color: var(--pink-primary);
+            font-size: 1.3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.25s ease;
+        }
+
+        .btn-nav:hover {
+            background: var(--pink-gradient);
+            color: white;
+            transform: scale(1.12);
+            box-shadow: 0 8px 20px rgba(255, 42, 117, 0.4);
+        }
+
+        .progress-bar-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 182, 193, 0.3);
+            z-index: 10;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--pink-gradient);
+            transition: width 0.4s ease;
+        }
+
+        .slide-counter {
+            position: absolute;
+            bottom: 35px;
+            left: 50px;
+            font-weight: 800;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+            background: rgba(255,255,255,0.9);
+            padding: 6px 18px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,77,141,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Decorative Flowers & Vector Icons -->
+    <div class="bg-decorations">
+        <div class="flower-petal"></div>
+        <div class="flower-petal"></div>
+        <div class="flower-petal"></div>
+        <div class="flower-petal"></div>
+        <i class="fa-solid fa-gavel legal-svg-bg legal-svg-1"></i>
+        <i class="fa-solid fa-scale-balanced legal-svg-bg legal-svg-2"></i>
+    </div>
+
+    <!-- Main Presentation Outer Wrapper -->
+    <div class="presentation-container">
+
+        <!-- [SLIDE 1: MỞ ĐẦU] -->
+        <section class="slide active" id="slide-1">
+            <div class="slide-title-hero">
+                <div class="hero-badge waterfall">
+                    <i class="fa-solid fa-graduation-cap"></i> TUẦN 5 - CHỦ ĐỀ 3
+                </div>
+                <div class="hero-icon waterfall">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                </div>
+                <h1 class="hero-main-title waterfall">GIẢI THÍCH PHÁP LUẬT</h1>
+            </div>
+        </section>
+
+        <!-- [SLIDE 2: I.1 KHÁI NIỆM] -->
+        <section class="slide" id="slide-2">
+            <div class="slide-header waterfall">
+                <h2 class="animated-gradient-title">
+                    <i class="fa-solid fa-book-open"></i> I. Nội dung và dấu hiệu pháp lý của giải thích pháp luật
+                </h2>
+                <span class="slide-tag">I.1 Khái niệm</span>
+            </div>
+            <div class="content-container">
+                <div class="card waterfall" style="border-left-width: 8px;">
+                    <div class="card-title">
+                        <i class="fa-solid fa-lightbulb"></i> Khái niệm
+                    </div>
+                    <div class="card-body" style="font-size: 1.35rem; line-height: 1.8;">
+                        <p style="margin-bottom: 18px;">
+                            <strong>Bản chất:</strong> Là hoạt động làm sáng tỏ tư tưởng, nội dung và ý nghĩa của quy phạm pháp luật.
+                        </p>
+                        <p>
+                            <strong>Mục đích:</strong> Đảm bảo nhận thức và thực thi pháp luật đúng đắn, thống nhất trên thực tế.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [SLIDE 3: I.2 DẤU HIỆU PHÁP LÝ] -->
+        <section class="slide" id="slide-3">
+            <div class="slide-header waterfall">
+                <h2 class="animated-gradient-title">
+                    <i class="fa-solid fa-stamp"></i> 2. Dấu hiệu pháp lý (các tiêu chí nhận diện)
+                </h2>
+                <span class="slide-tag">I.2 Dấu hiệu</span>
+            </div>
+            <div class="content-container grid-2">
+                <div class="card waterfall">
+                    <div class="card-title"><i class="fa-solid fa-crosshairs"></i> Đối tượng</div>
+                    <div class="card-body">
+                        Tác động trực tiếp vào ngôn từ và tinh thần của văn bản/quy phạm pháp luật sẵn có.
+                    </div>
+                </div>
+                <div class="card waterfall">
+                    <div class="card-title"><i class="fa-solid fa-shield-halved"></i> Bản chất</div>
+                    <div class="card-body">
+                        Chỉ làm sáng tỏ nghĩa (rõ ràng, thống nhất), tuyệt đối không tạo ra luật mới hay sửa đổi luật.
+                    </div>
+                </div>
+                <div class="card waterfall">
+                    <div class="card-title"><i class="fa-solid fa-brain"></i> Phương pháp</div>
+                    <div class="card-body">
+                        Dựa trên phân tích ngữ nghĩa, logic, lịch sử ban hành và tính hệ thống của pháp luật.
+                    </div>
+                </div>
+                <div class="card waterfall">
+                    <div class="card-title"><i class="fa-solid fa-gavel"></i> Hiệu lực</div>
+                    <div class="card-body">
+                        <ul>
+                            <li><strong>Chính thức:</strong> Do cơ quan có thẩm quyền ban hành (UBTVQH), có giá trị bắt buộc chung.</li>
+                            <li><strong>Không chính thức:</strong> Do chuyên gia, Tòa án thực hiện, chỉ mang tính tham khảo/áp dụng cụ thể.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [SLIDE 4: I.3 PHÂN LOẠI] -->
+        <section class="slide" id="slide-4">
+            <div class="slide-header waterfall">
+                <h2 class="animated-gradient-title">
+                    <i class="fa-solid fa-sitemap"></i> 3. Phân loại
+                </h2>
+                <span class="slide-tag">I.3 Phân loại</span>
+            </div>
+            <div class="content-container grid-2">
+                <!-- Group A -->
+                <div class="card waterfall" style="background: #fff5f8;">
+                    <div class="card-title" style="color: #be123c;">
+                        <i class="fa-solid fa-award"></i> A. Giải thích chính thức
+                    </div>
+                    <div class="card-body">
+                        <p style="margin-bottom: 10px;"><strong>1. Chủ thể:</strong> Cơ quan, cá nhân có thẩm quyền.</p>
+                        <p style="margin-bottom: 10px;"><strong>2. Giá trị pháp lý:</strong> Mang tính bắt buộc, có giá trị ràng buộc thi hành.</p>
+                        <p><strong>3. Các hình thức:</strong></p>
+                        <ul>
+                            <li><strong>Quy phạm:</strong> Giải thích chung để áp dụng thống nhất.</li>
+                            <li><strong>Cá biệt:</strong> Hướng dẫn áp dụng cho một vụ việc cụ thể.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Group B -->
+                <div class="card waterfall" style="background: #f0fdf4;">
+                    <div class="card-title" style="color: #15803d;">
+                        <i class="fa-solid fa-user-graduate"></i> B. Giải thích không chính thức
+                    </div>
+                    <div class="card-body">
+                        <p style="margin-bottom: 10px;"><strong>1. Chủ thể:</strong> Chuyên gia, luật sư, giảng viên...</p>
+                        <p style="margin-bottom: 10px;"><strong>2. Giá trị pháp lý:</strong> Không bắt buộc, không có giá trị ràng buộc.</p>
+                        <p style="margin-bottom: 10px;"><strong>3. Ý nghĩa:</strong> Hỗ trợ nghiên cứu, giảng dạy, phổ biến và nâng cao ý thức pháp luật.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [SLIDE 5: I.4 PHƯƠNG PHÁP GIẢI THÍCH] -->
+        <section class="slide" id="slide-5">
+            <div class="slide-header waterfall">
+                <h2 class="animated-gradient-title">
+                    <i class="fa-solid fa-compass"></i> 4. Các phương pháp giải thích
+                </h2>
+                <span class="slide-tag">I.4 Phương pháp</span>
+            </div>
+            <div class="content-container grid-4">
+                <div class="card waterfall">
+                    <div class="card-title"><i class="fa-solid fa-font"></i> a) Giải thích văn phạm</div>
+                    <div class="card-body">
+                        Phân tích ý nghĩa của từ ngữ, câu chữ và cấu trúc ngữ pháp trong quy phạm pháp luật để làm rõ nội dung.
+                    </div>
+                </div>
+                <div class="card waterfall">
+                    <div class="card-title"><i class="fa-solid fa-diagram-project"></i> b) Giải thích logic</div>
+                    <div class="card-body">
+                        Sử dụng các quy tắc tư duy, suy luận logic để làm sáng tỏ nội dung và ý nghĩa của quy phạm pháp luật.
+                    </div>
+                </div>
+                <div class="card waterfall">
+                    <div class="card-title"><i class="fa-solid fa-network-wired"></i> c) Giải thích hệ thống</div>
+                    <div class="card-body">
+                        Đặt quy phạm pháp luật trong mối liên hệ với các quy phạm khác, các chế định và ngành luật để xác định đúng ý nghĩa.
+                    </div>
+                </div>
+                <div class="card waterfall">
+                    <div class="card-title"><i class="fa-solid fa-landmark-flag"></i> d) Chính trị – lịch sử</div>
+                    <div class="card-body">
+                        Dựa vào hoàn cảnh chính trị, lịch sử, kinh tế – xã hội tại thời điểm ban hành văn bản để làm rõ nội dung và ý nghĩa của quy định.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [SLIDE 6: II. Ý NGHĨA VÀ BÀN LUẬN] -->
+        <section class="slide" id="slide-6">
+            <div class="slide-header waterfall">
+                <h2 class="animated-gradient-title">
+                    <i class="fa-solid fa-comments"></i> II. Ý nghĩa và bàn luận về việc áp dụng
+                </h2>
+                <span class="slide-tag">II. Ý nghĩa & Bàn luận</span>
+            </div>
+            <div class="content-container grid-2">
+                <div class="card waterfall" style="height: 100%;">
+                    <div class="card-title"><i class="fa-solid fa-star"></i> 1. Ý nghĩa</div>
+                    <div class="card-body" style="font-size: 1.2rem;">
+                        <ul>
+                            <li style="margin-bottom: 12px;">Bảo đảm áp dụng pháp luật thống nhất</li>
+                            <li style="margin-bottom: 12px;">Làm rõ nội dung quy phạm pháp luật</li>
+                            <li style="margin-bottom: 12px;">Bảo vệ quyền và lợi ích hợp pháp</li>
+                            <li style="margin-bottom: 12px;">Nâng cao hiệu quả quản lý nhà nước</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card waterfall" style="height: 100%;">
+                    <div class="card-title"><i class="fa-solid fa-triangle-exclamation"></i> 2. Vấn đề có thể xảy ra</div>
+                    <div class="card-body" style="font-size: 1.2rem;">
+                        <ul>
+                            <li style="margin-bottom: 12px;">Giải thích chủ quan, vượt giới hạn</li>
+                            <li style="margin-bottom: 12px;">Chồng chéo, mâu thuẫn</li>
+                            <li style="margin-bottom: 12px;">Độ trễ pháp lý</li>
+                            <li style="margin-bottom: 12px;"><strong>Dẫn chứng thực tế:</strong> Án lệ 04/2016/AL về vụ án “Tranh chấp hợp đồng chuyển nhượng quyền sử dụng đất”</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [SLIDE 7: II.3 GIẢI PHÁP & LIÊN HỆ BẢN THÂN] -->
+        <section class="slide" id="slide-7">
+            <div class="slide-header waterfall">
+                <h2 class="animated-gradient-title">
+                    <i class="fa-solid fa-lightbulb"></i> 3. Giải pháp & Liên hệ bản thân
+                </h2>
+                <span class="slide-tag">II.3 Giải pháp</span>
+            </div>
+            <div class="content-container">
+                <!-- Exact Dashboard Design Replica (Optimized to fill full screen) -->
+                <div class="solution-dashboard waterfall">
+                    <div class="dash-header">
+                        <h3>GIẢI PHÁP</h3>
+                        <h4>Nâng cao hiệu quả giải thích pháp luật</h4>
+                        <p>Chính xác · Thống nhất · Kịp thời</p>
+                    </div>
+                    <div class="dash-grid">
+                        <div class="dash-card dash-card-1">
+                            <div class="dash-card-title">01. ĐÚNG THẨM QUYỀN</div>
+                            <ul>
+                                <li>Đúng chức năng, thẩm quyền</li>
+                                <li>Không vượt giới hạn văn bản gốc</li>
+                                <li>Không tự đặt ra quy định mới</li>
+                            </ul>
+                        </div>
+                        <div class="dash-card dash-card-2">
+                            <div class="dash-card-title">02. THỐNG NHẤT</div>
+                            <ul>
+                                <li>Phối hợp giữa các cơ quan</li>
+                                <li>Rà soát mâu thuẫn, chồng chéo</li>
+                                <li>Công khai văn bản, phát triển án lệ</li>
+                            </ul>
+                        </div>
+                        <div class="dash-card dash-card-3">
+                            <div class="dash-card-title">03. KỊP THỜI</div>
+                            <ul>
+                                <li>Rà soát quy định chưa phù hợp</li>
+                                <li>Cập nhật, công khai thông tin</li>
+                                <li>Nâng cao năng lực chuyên môn</li>
+                            </ul>
+                        </div>
+                        <div class="dash-card dash-card-4">
+                            <div class="dash-card-title">04. LIÊN HỆ BẢN THÂN</div>
+                            <ul>
+                                <li>Tra cứu nguồn chính thống</li>
+                                <li>Đối chiếu quy định liên quan</li>
+                                <li>Rèn luyện tư duy pháp lý</li>
+                                <li>Vận dụng vào kinh doanh quốc tế</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="dash-footer">
+                        HIỂU ĐÚNG &rarr; ÁP DỤNG ĐÚNG &rarr; THỰC HIỆN ĐÚNG
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [SLIDE 8: III. LIÊN HỆ THỰC TIỄN & KẾT LUẬN] -->
+        <section class="slide" id="slide-8">
+            <div class="slide-header waterfall">
+                <h2 class="animated-gradient-title">
+                    <i class="fa-solid fa-flag-checkered"></i> III. Liên hệ thực tiễn & Kết luận
+                </h2>
+                <span class="slide-tag">III. Thực tiễn & Kết luận</span>
+            </div>
+            <div class="content-container">
+                <div class="anle-container">
+                    <!-- Image Placeholder Box -->
+                    <div class="image-placeholder-box waterfall" onclick="alert('Hãy dán URL ảnh Án lệ 17/2018/AL của bạn vào thuộc tính src hoặc background nhé!')">
+                        <i class="fa-solid fa-image"></i>
+                        <span>Khu vực chèn hình ảnh Án lệ số 17/2018/AL</span>
+                        <small style="color: #64748b;">(Click để dán URL ảnh thật)</small>
+                    </div>
+
+                    <!-- Details & Conclusion -->
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <div class="card waterfall">
+                            <div class="card-title"><i class="fa-solid fa-scale-unbalanced"></i> 1. Liên hệ</div>
+                            <div class="card-body">
+                                <strong>Án lệ số 17/2018/AL</strong>
+                                <p style="margin-top: 10px; font-style: italic; color: var(--text-muted);">
+                                    (1 SLIDE hình ảnh, nd để ng thuyết trình tự soạn và nói nha).
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="card waterfall" style="background: linear-gradient(135deg, #fff0f6 0%, #fff 100%); border: 2px solid var(--pink-primary);">
+                            <div class="card-title" style="color: var(--pink-primary);"><i class="fa-solid fa-quote-left"></i> 2. Kết luận</div>
+                            <div class="card-body" style="font-size: 1.2rem; line-height: 1.7; font-weight: 600;">
+                                Giá trị của pháp luật không chỉ nằm ở những quy định được ban hành, mà còn nằm ở cách chúng ta hiểu và vận dụng những quy định ấy trong thực tiễn.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide Counter Indicator -->
+        <div class="slide-counter">
+            Slide <span id="current-slide">1</span> / <span id="total-slides">8</span>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="controls">
+            <button class="btn-nav" id="prev-btn" title="Slide trước"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="btn-nav" id="next-btn" title="Slide tiếp"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+
+        <!-- Bottom Progress Bar -->
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const currentSlideEl = document.getElementById('current-slide');
+            const totalSlidesEl = document.getElementById('total-slides');
+            const progressBar = document.getElementById('progress-bar');
+
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+
+            totalSlidesEl.textContent = totalSlides;
+
+            function updateSlide(index) {
+                slides.forEach((slide, i) => {
+                    if (i === index) {
+                        slide.classList.add('active');
+                    } else {
+                        slide.classList.remove('active');
+                    }
+                });
+
+                currentSlideEl.textContent = index + 1;
+                const progressPercentage = ((index + 1) / totalSlides) * 100;
+                progressBar.style.width = `${progressPercentage}%`;
+            }
+
+            function nextSlide() {
+                if (currentIndex < totalSlides - 1) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0; // Loop back to start
+                }
+                updateSlide(currentIndex);
+            }
+
+            function prevSlide() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                } else {
+                    currentIndex = totalSlides - 1;
+                }
+                updateSlide(currentIndex);
+            }
+
+            // Event Listeners
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            // Keyboard Navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight' || e.key === 'Space' || e.key === 'PageDown') {
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                    prevSlide();
+                }
+            });
+
+            // Touch support for Mobile swipe
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            document.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            document.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                if (touchEndX < touchStartX - 50) nextSlide();
+                if (touchEndX > touchStartX + 50) prevSlide();
+            }
+
+            // Initialize Progress
+            updateSlide(currentIndex);
+        });
+    </script>
+</body>
+</html>
